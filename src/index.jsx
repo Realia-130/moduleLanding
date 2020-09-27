@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import App from './App.jsx';
 import ListingInfo from './components/listingData/ListingInfo.jsx';
+import Banner from './components/photoComponents/Banner.jsx';
 
 const data = {
   listing_data: {
@@ -20,8 +21,9 @@ const data = {
   listing_id: 58,
   listing_type: 'For Sale',
   listing_is_saved: false,
-  listing_is_new: false,
+  listing_is_new: true,
   __v: 0,
 };
+{/* <ListingInfo listingData={data.listing_data} /> */ }
 
-ReactDOM.render(<ListingInfo listingData={data.listing_data} />, document.getElementById('root'));
+ReactDOM.render(<Banner data={data} />, document.getElementById('root'));

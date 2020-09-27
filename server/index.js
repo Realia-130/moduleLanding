@@ -53,8 +53,8 @@ app.post('/api/tours', (req, res) => {
 });
 
 app.put('/api/update_saved', (req, res) => {
-  const { listingId } = req.body;
-  const { newValue } = req.body;
+  const { listingId } = req.query;
+  const { newValue } = req.query;
   db.updateSave((error, results) => {
     if (error) {
       res.status(400).send(error);
