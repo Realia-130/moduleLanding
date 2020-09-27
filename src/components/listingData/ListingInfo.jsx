@@ -5,24 +5,10 @@ import ListingSpecs from './ListingSpecs.jsx';
 import ListingPrice from './ListingPrice.jsx'
 
 function ListingInfo({ listingData }) {
-  const prices = {
-    currentPrice: listingData.current_price,
-    startingPrice: listingData.starting_price,
-  };
-  const specs = {
-    address: listingData.address,
-    city: listingData.city,
-    state: listingData.state,
-    neighborhood: listingData.neighborhood,
-    bed: listingData.bed_count,
-    bath: listingData.bath_count,
-    sqft: listingData.sqft,
-  };
-
   return (
     <div>
-      <ListingSpecs specs={specs} />
-      <ListingPrice prices={prices} />
+      <ListingSpecs specs={listingData} />
+      <ListingPrice prices={listingData} />
     </div>
   );
 }
