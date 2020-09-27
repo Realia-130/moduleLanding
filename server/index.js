@@ -21,7 +21,7 @@ app.get('/api/listings', (req, res) => {
 });
 
 app.get('/api/listing', (req, res) => {
-  const { listingId } = req.body;
+  const { listingId } = req.query;
   db.getListing((error, results) => {
     if (error) {
       res.status(400).send(error);
