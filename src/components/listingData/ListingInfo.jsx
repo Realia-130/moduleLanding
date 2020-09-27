@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 // import { PropTypes } from 'prop-types';
-// import axios from 'axios';
-// import ListingSpecs from './ListingSpecs.jsx';
+import ListingSpecs from './ListingSpecs.jsx';
 import ListingPrice from './ListingPrice.jsx'
 
 function ListingInfo({ listingData }) {
@@ -13,6 +12,7 @@ function ListingInfo({ listingData }) {
   const specs = {
     address: listingData.address,
     city: listingData.city,
+    state: listingData.state,
     neighborhood: listingData.neighborhood,
     bed: listingData.bed_count,
     bath: listingData.bath_count,
@@ -21,7 +21,7 @@ function ListingInfo({ listingData }) {
 
   return (
     <div>
-      {/* <ListingSpecs specs={specs} /> */}
+      <ListingSpecs specs={specs} />
       <ListingPrice prices={prices} />
     </div>
   );

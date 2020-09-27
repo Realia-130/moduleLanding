@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 function ListingPrice({ prices }) {
-  const [startingPrice,] = useState(prices.startingPrice);
-  const [currentPrice,] = useState(prices.currentPrice);
+  const [startingPrice] = useState(prices.startingPrice);
+  const [currentPrice] = useState(prices.currentPrice);
   const [displayStarting, setStarting] = useState(true);
 
   useEffect(() => {
@@ -11,16 +11,9 @@ function ListingPrice({ prices }) {
     }
   }, []);
 
-  function Starting() {
-    return (
-      <div>{`${startingPrice}`}</div>
-    );
-  }
-  function Current() {
-    return (
-      <div>{`${currentPrice}`}</div>
-    );
-  }
+  function Starting() { return <div>{`${startingPrice}`}</div>; }
+  function Current() { return <div>{`${currentPrice}`}</div>; }
+
   return (
     <div>
       <Current />
