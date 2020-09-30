@@ -1,0 +1,21 @@
+module.exports = {
+  listing_data: {
+    address: '75021 Stehr Burg',
+    city: 'West Francishaven',
+    state: 'TX',
+    zipCode: '52412',
+    neighborhood: 'Buckinghamshire',
+    bed_count: 6,
+    bath_count: 5.5,
+    sqft: 2400,
+    starting_price: '$465,000',
+    current_price: '$425,000',
+  },
+  listing_photos: [],
+  _id: '5f6ee48b3e8a69e3cefcd4bc',
+  listing_id: 58,
+  listing_type: 'For Sale',
+  listing_is_saved: false,
+  listing_is_new: true,
+  __v: 0,
+};
