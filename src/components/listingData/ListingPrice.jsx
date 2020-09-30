@@ -1,4 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  font-weight: 500;
+  font-size: 26px;
+`;
+const LineThrough = styled.div`
+  text-decoration-line: line-through;
+`;
+
 
 function ListingPrice({ prices }) {
   const [displayStarting, setStarting] = useState(true);
@@ -14,8 +24,8 @@ function ListingPrice({ prices }) {
 
   return (
     <div>
-      <Current />
-      {displayStarting ? <Starting /> : null}
+      <Wrapper><Current /></Wrapper>
+      <LineThrough>{displayStarting ? <Starting /> : null}</LineThrough>
     </div>
   );
 }
