@@ -10,7 +10,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-//  getListings endpoint to get all listings
 app.get('/api/listings', (req, res) => {
   db.getAllListings((error, results) => {
     if (error) {
@@ -21,18 +20,17 @@ app.get('/api/listings', (req, res) => {
   });
 });
 
-//  getListing endpoint to get a single listing
 app.get('/api/listing', (req, res) => {
+  const { listingId } = req.query;
   db.getListing((error, results) => {
     if (error) {
       res.status(400).send(error);
     } else {
       res.status(200).send(results);
     }
-  }, { listing_id: 98 });
+  }, listingId);
 });
 
-//  seeding database endpoint
 app.post('/seeding', (req, res) => {
   const newListing = req.body;
   db.seedListings((error, results) => {
@@ -44,7 +42,6 @@ app.post('/seeding', (req, res) => {
   }, newListing);
 });
 
-//  schedule tour endpoint
 app.post('/api/tours', (req, res) => {
   db.scheduleTour((error, results) => {
     if (error) {
@@ -55,10 +52,9 @@ app.post('/api/tours', (req, res) => {
   }, req.body);
 });
 
-//  save listing to updated listing as being saved
 app.put('/api/update_saved', (req, res) => {
-  const { listingId } = req.body;
-  const { newValue } = req.body;
+  const { listingId } = req.query;
+  const { newValue } = req.query;
   db.updateSave((error, results) => {
     if (error) {
       res.status(400).send(error);
@@ -68,7 +64,6 @@ app.put('/api/update_saved', (req, res) => {
   }, listingId, newValue);
 });
 
-//  remove listing from db
 app.delete('/api/remove_listing', (req, res) => {
   const { listingId } = req.body;
   db.removeListing((error, result) => {
@@ -81,6 +76,5 @@ app.delete('/api/remove_listing', (req, res) => {
 });
 
 app.listen(port, () => {
-  // eslint-disable-next-line no-console
   console.log(`listening on port:${port}`);
 });

@@ -12,6 +12,7 @@ const listingSchema = new Schema({
     address: String,
     city: String,
     state: String,
+    zipCode: String,
     neighborhood: String,
     bed_count: Number,
     bath_count: Number,

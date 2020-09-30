@@ -50,7 +50,6 @@ function createListing(id) {
   const listingStatus = isNew();
   const startPrice = Math.floor(Math.random() * 45) * 15000;
   const currentPrice = listingStatus ? startPrice : (startPrice - ((Math.floor(Math.random() * 5) + 1) * 10000));
-
   const newListing = {
     listing_id: id,
     listing_photo: [],
@@ -61,6 +60,7 @@ function createListing(id) {
       address: faker.address.streetAddress(),
       city: faker.address.city(),
       state: faker.address.stateAbbr(),
+      zipCode: faker.zipCode(),
       neighborhood: faker.address.county(),
       bed_count: room,
       bath_count: getRest(room),
