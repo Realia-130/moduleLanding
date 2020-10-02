@@ -94,7 +94,7 @@ const ArrowBtnRT = styled.button`
   left: 90%;
   z-index: 10;
 `;
-function Photos({ info }) {
+function Modal({ info }) {
   const totalPhotos = sampleData.length - 1;
   const [currentImg, setCurrentImg] = useState(0);
   const [showModal, setShowModal] = useState(true);
@@ -105,7 +105,7 @@ function Photos({ info }) {
   function Right() {
     currentImg === totalPhotos ? setCurrentImg(0) : setCurrentImg(currentImg + 1);
   }
-  function Modal() {
+  function Content() {
     return (
       <Carousel>
         <ArrowBtnLT onClick={Left}>
@@ -141,14 +141,14 @@ function Photos({ info }) {
   return (
     <ModalWrapper>
       <UpperBanner />
-      <Modal />
+      <Content />
       <LowerBanner />
     </ModalWrapper>
 
   );
 }
 
-export default Photos;
+export default Modal;
 
 
 

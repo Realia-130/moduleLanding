@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import ListingInfo from './components/listingData/ListingInfo.jsx';
 import Banner from './components/photoComponents/Banner.jsx';
 import PhotoComponent from './components/photoComponents/PhotoComponent.jsx';
-import Photos from './components/photoComponents/Photos.jsx';
+import Modal from './components/photoComponents/Modal.jsx';
 
 const data = {
   listing_data: {
@@ -39,12 +39,10 @@ function App() {
     cursor: pointer;
   `;
   const [showModal, setShowModal] = useState(false);
-  function Modal() {
-    setShowModal(!showModal);
-  }
+
   return (
     <div>
-      {showModal ? <Photos info={data.listing_data} /> : null}
+      {showModal ? <Modal info={data.listing_data} /> : null}
       <Landing onClick={(e) => {
         setShowModal(!showModal)
         console.log(showModal)

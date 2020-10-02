@@ -11,9 +11,7 @@ const img2 = 'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img02.j
 const img3 = 'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img03.jpg';
 
 function PhotoComponent() {
-  function Modal() {
-    setShowModal(!showModal);
-  }
+
   return (
     <div >
       <PhotoPreview >
