@@ -1,11 +1,12 @@
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 // import App from './App.jsx';
 import ListingInfo from './components/listingData/ListingInfo.jsx';
 import Banner from './components/photoComponents/Banner.jsx';
 import PhotoComponent from './components/photoComponents/PhotoComponent.jsx';
+import Photos from './components/photoComponents/Photos.jsx';
 
 const data = {
   listing_data: {
@@ -30,18 +31,27 @@ const data = {
 };
 
 function App() {
-  const Photos = styled.div`
+  const Landing = styled.div`
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+    cursor: pointer;
   `;
+  const [showModal, setShowModal] = useState(false);
+  function Modal() {
+    setShowModal(!showModal);
+  }
   return (
     <div>
-      <Photos>
+      {showModal ? <Photos info={data.listing_data} /> : null}
+      <Landing onClick={(e) => {
+        setShowModal(!showModal)
+        console.log(showModal)
+      }}>
         <Banner data={data} />
         <PhotoComponent />
-      </Photos>
+      </Landing>
       <ListingInfo listingData={data.listing_data} />
     </div>
   );

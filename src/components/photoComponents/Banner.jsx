@@ -20,8 +20,7 @@ function Banner({ data }) {
         newValue: !isSaved,
       },
     })
-      .then();
-    setSaved(!isSaved);
+      .then(setSaved(!isSaved));
   }
 
   return (

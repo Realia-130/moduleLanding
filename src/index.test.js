@@ -4,7 +4,7 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { mount, configure } from 'enzyme';
+import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16.3';
 import PhotoComponent from './components/photoComponents/PhotoComponent.jsx';
 import Banner from './components/photoComponents/Banner.jsx';

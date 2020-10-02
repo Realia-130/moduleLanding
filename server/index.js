@@ -75,6 +75,10 @@ app.delete('/api/remove_listing', (req, res) => {
   }, listingId);
 });
 
+app.get('/test', (req, res) => {
+  res.status(200).send('test good');
+});
+
 app.listen(port, () => {
-  console.log(`listening on port:${port}`);
+  // console.log(`listening on port:${port}`);
 });

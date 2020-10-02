@@ -23,6 +23,8 @@
     "@babel/preset-react": "^7.10.4",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
+    "babel-polyfill": "^6.26.0",
+    "env-cmd": "^10.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16.3": "^1.7.3",
     "eslint": "^7.9.0",
@@ -33,9 +35,12 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "jest": "^26.4.2",
     "jest-cli": "^26.4.2",
+    "jest-serial-runner": "^1.1.0",
+    "jest-stare": "^2.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
+    "supertest": "^5.0.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
@@ -43,8 +48,12 @@
     "collectCoverage": true,
     "coverageReporters": [
       "json",
-      "html"
-    ]
+      "html",
+      "text",
+      "js",
+      "jsx"
+    ],
+    "verbose": true
   },
   "scripts": {
     "test": "jest --coverage",
