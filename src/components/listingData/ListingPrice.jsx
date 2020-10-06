@@ -1,30 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
 
-const Wrapper = styled.div`
-  font-weight: 500;
-  font-size: 26px;
-`;
-const LineThrough = styled.div`
-  text-decoration-line: line-through;
-`;
-
+const { LineThrough } = require('./ListingStyle');
+const { ListingPriceWrapper } = require('./ListingStyle');
 
 function ListingPrice({ prices }) {
-  const [displayStarting, setStarting] = useState(true);
-
-  useEffect(() => {
-    if (prices.current_price === prices.starting_price) {
-      setStarting(false);
-    }
-  }, []);
+  const shouldDisplayStarting = !(prices.current_price === prices.starting_price);
+  const [displayStarting] = useState(shouldDisplayStarting);
 
   function Starting() { return <div>{`${prices.starting_price}`}</div>; }
   function Current() { return <div>{`${prices.current_price}`}</div>; }
 
   return (
     <div>
-      <Wrapper><Current /></Wrapper>
+      <ListingPriceWrapper><Current /></ListingPriceWrapper>
       <LineThrough>{displayStarting ? <Starting /> : null}</LineThrough>
     </div>
   );

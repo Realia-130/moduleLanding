@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // const model = require('../database/listingSchema');
 const db = require('../database/index');
+const cors = require('cors')
 
 const app = express();
 const port = 3001;
@@ -9,6 +10,8 @@ const port = 3001;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use(cors())
+
 
 app.get('/api/listings', (req, res) => {
   db.getAllListings((error, results) => {
@@ -75,6 +78,10 @@ app.delete('/api/remove_listing', (req, res) => {
   }, listingId);
 });
 
+app.get('/test', (req, res) => {
+  res.status(200).send('test good');
+});
+
 app.listen(port, () => {
-  console.log(`listening on port:${port}`);
+  // console.log(`listening on port:${port}`);
 });

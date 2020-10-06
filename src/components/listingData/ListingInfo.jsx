@@ -1,29 +1,20 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 import React from 'react';
-// import { PropTypes } from 'prop-types';
-import styled from 'styled-components';
 import ListingSpecs from './ListingSpecs.jsx';
 import ListingPrice from './ListingPrice.jsx';
-// const { Button } = require('./style');
 
-const Wrapper = styled.div`
-  font-family:  sans-serif;
-  font-weight: lighter;
-  float: left;
-  padding: 20px;
-  position: relative;
-`;
+const { ListingWrapper } = require('./ListingStyle');
 
 function ListingInfo({ listingData }) {
   return (
     <div>
-      <Wrapper>
+      <ListingWrapper>
         <ListingSpecs specs={listingData} />
-      </Wrapper>
-      <Wrapper>
+      </ListingWrapper>
+      <ListingWrapper>
         <ListingPrice prices={listingData} />
-      </Wrapper>
+      </ListingWrapper>
     </div>
   );
 }

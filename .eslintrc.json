@@ -18,5 +18,7 @@
     "plugins": [
         "react"
     ],
-    "rules": {}
+    "rules": {
+        "allowTernary": true
+    }
 }

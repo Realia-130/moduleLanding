@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(`${__dirname}/public/`),
-    filename: 'app.js',
+    filename: 'photos.js',
   },
   module: {
     rules: [
