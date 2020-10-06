@@ -5,10 +5,9 @@ const { SaveBTN } = require('./PhotoStyles');
 const { Pink } = require('./PhotoStyles');
 const { ModalWrapper, LowerBannerWrapper, UpperBannerWrapper, Carousel, Exit, ArrowBtnLT, ArrowBtnRT } = require('./ModalStyles');
 
-function Modal({ info, photos }) {
+function Modal({ info, photos, setModal }) {
   const totalPhotos = photos.length - 1;
   const [currentImg, setCurrentImg] = useState(0);
-  const [showModal, setShowModal] = useState(true);
   const [isSaved, setSaved] = useState(info.listing_is_saved);
 
   function Left() {
@@ -51,7 +50,7 @@ function Modal({ info, photos }) {
     return (
       <UpperBannerWrapper>
         <SaveBTN onClick={savedCall}>{heart} Save</SaveBTN>
-        <Exit border="none"><i class="fas fa-times fa-2x" /></Exit>
+        <Exit><i class="fas fa-times fa-2x" onClick={setModal} /></Exit>
       </UpperBannerWrapper >
     );
   }

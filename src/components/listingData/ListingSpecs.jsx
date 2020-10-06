@@ -29,12 +29,3 @@ function ListingSpecs({ specs }) {
 }
 
 export default ListingSpecs;
-
-
-
-
-/*
-<i class="fas fa-bed"/>
-<i class="fas fa-sink"/>
-<i class="fas fa-ruler-combined"/>
-*/

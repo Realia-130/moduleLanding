@@ -1,12 +1,11 @@
 /* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
-// import App from './App.jsx';
 import ListingInfo from './components/listingData/ListingInfo.jsx';
 import Banner from './components/photoComponents/Banner.jsx';
 import PhotoComponent from './components/photoComponents/PhotoComponent.jsx';
 import Modal from './components/photoComponents/Modal.jsx';
+const { Landing, GrayOut, Norm } = require('./AppStyle');
 
 const data = {
   listing_data: {
@@ -40,32 +39,17 @@ const data = {
   __v: 0,
 };
 
-function App() {
-  const Landing = styled.div`
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    z-index: 50;
-  `;
-  const GrayOut = styled.div`
-    filter: grayscale(80%) blur(10px);
-    margin: auto;
-    width: 1000px;
-    height: 100%;
-`;
-  const Norm = styled.div`
-  margin: auto;
-  width: 1000px;
-`;
+function Photos() {
 
   const [Wrapper, setWrapper] = useState(Norm);
   const [showModal, setShowModal] = useState(data.listing_is_saved);
-
+  const callBack = () => {
+    showModal ? setWrapper(Norm) : setWrapper(GrayOut);
+    setShowModal(!showModal);
+  }
   return (
     <div>
-      { showModal ? <Modal info={data.listing_data} photos={data.listing_photos} /> : null}
+      { showModal ? <Modal info={data.listing_data} photos={data.listing_photos} setModal={callBack} /> : null}
       <Wrapper>
         <Landing onClick={(e) => {
           if (e.target.innerText !== ' Save') {
@@ -82,4 +66,4 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Photos />, document.getElementById('Photos'));
