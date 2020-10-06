@@ -1,15 +1,18 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 const { BannerWrapper } = require('./PhotoStyles');
 const { SaveBTN } = require('./PhotoStyles');
 const { Border } = require('./PhotoStyles');
 const { New } = require('./PhotoStyles');
+const { Pink } = require('./PhotoStyles');
 //  needs access to isSaved isNew and photos
 function Banner({ data }) {
   const [isNew] = useState(data.listing_is_new);
-  const [isSaved, setSaved] = useState(false);// change to data.listing_is_saved
+  const [isSaved, setSaved] = useState(data.listing_is_saved);// change to data.listing_is_saved
+  const [heart, setHeart] = useState(<i class="far fa-heart " />)
 
   function savedCall() {
     axios({
@@ -21,6 +24,7 @@ function Banner({ data }) {
       },
     })
       .then(setSaved(!isSaved));
+    isSaved ? setHeart(<Pink><i class="fas fa-heart " /></Pink>) : setHeart(<i class="far fa-heart " />)
   }
 
   return (
@@ -31,7 +35,7 @@ function Banner({ data }) {
         type="SaveBTN"
         onClick={savedCall}
       >
-        Save
+        {heart} Save
       </SaveBTN>
     </BannerWrapper>
   );

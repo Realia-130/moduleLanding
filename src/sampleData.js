@@ -11,7 +11,17 @@ module.exports = {
     starting_price: '$465,000',
     current_price: '$425,000',
   },
-  listing_photos: [],
+  listing_photos: [
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img01.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img02.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img03.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img04.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img05.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img06.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img07.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img08.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img09.jpg'
+  ],
   _id: '5f6ee48b3e8a69e3cefcd4bc',
   listing_id: 58,
   listing_type: 'For Sale',

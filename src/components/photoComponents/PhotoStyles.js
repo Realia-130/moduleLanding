@@ -23,6 +23,7 @@ height: 42px;
 margin-left: 650px;
 border-radius: 5px;
 float: right;
+z-index: 1000;
 `;
 export const Border = styled.span`
 color: #19B15B;
@@ -86,4 +87,8 @@ display: block;
 width: 248px;
 height: 245px;
 z-index: -1;
+`;
+
+export const Pink = styled.span`
+color: #F75E3F;
 `;

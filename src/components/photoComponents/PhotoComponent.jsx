@@ -6,19 +6,15 @@ const { Img } = require('./PhotoStyles');
 const { Img2 } = require('./PhotoStyles');
 const { Img3 } = require('./PhotoStyles');
 
-const img1 = 'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img01.jpg';
-const img2 = 'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img02.jpg';
-const img3 = 'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img03.jpg';
-
-function PhotoComponent() {
+function PhotoComponent({ photos }) {
 
   return (
     <div >
       <PhotoPreview >
-        <Img src={`${img1}`} />
+        <Img src={`${photos[0]}`} />
         <Secondary>
-          <Img2 src={`${img2}`} />
-          <Img3 src={`${img3}`} />
+          <Img2 src={`${photos[1]}`} />
+          <Img3 src={`${photos[2]}`} />
         </Secondary>
       </PhotoPreview>
     </div>

@@ -7,11 +7,12 @@ const { Neighborhood } = require('./ListingStyle');
 const { WrapperState } = require('./ListingStyle');
 
 function ListingSpecs({ specs }) {
+
   function Address() { return <div>{`${specs.address}`}</div>; }
   function Location() {
     return <div>{`${specs.city}, ${specs.state} ${specs.zipCode}`}</div>;
   }
-  function Stats() { return <div>{`${specs.bed_count}Beds ${specs.bath_count}Baths ${specs.sqft}sqft`}</div>; }
+  function Stats() { return <div> <i class="fas fa-bed" />{` ${specs.bed_count}Beds `} <i class="fas fa-sink" />{` ${specs.bath_count}Baths `}<i class="fas fa-ruler-combined" /> {` ${specs.sqft}sqft`}</div>; }
 
   return (
     <div>
@@ -28,3 +29,12 @@ function ListingSpecs({ specs }) {
 }
 
 export default ListingSpecs;
+
+
+
+
+/*
+<i class="fas fa-bed"/>
+<i class="fas fa-sink"/>
+<i class="fas fa-ruler-combined"/>
+*/

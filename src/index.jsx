@@ -21,7 +21,17 @@ const data = {
     starting_price: '$465,000',
     current_price: '$425,000',
   },
-  listing_photos: [],
+  listing_photos: [
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img01.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img02.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img03.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img04.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img05.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img06.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img07.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img08.jpg',
+    'https://realialistings.s3-us-west-1.amazonaws.com/listing1/img09.jpg'
+  ],
   _id: '5f6ee48b3e8a69e3cefcd4bc',
   listing_id: 58,
   listing_type: 'For Sale',
@@ -37,20 +47,37 @@ function App() {
     margin: 0;
     padding: 0;
     cursor: pointer;
+    z-index: 50;
   `;
-  const [showModal, setShowModal] = useState(false);
+  const GrayOut = styled.div`
+    filter: grayscale(80%) blur(10px);
+    margin: auto;
+    width: 1000px;
+    height: 100%;
+`;
+  const Norm = styled.div`
+  margin: auto;
+  width: 1000px;
+`;
+
+  const [Wrapper, setWrapper] = useState(Norm);
+  const [showModal, setShowModal] = useState(data.listing_is_saved);
 
   return (
     <div>
-      {showModal ? <Modal info={data.listing_data} /> : null}
-      <Landing onClick={(e) => {
-        setShowModal(!showModal)
-        console.log(showModal)
-      }}>
-        <Banner data={data} />
-        <PhotoComponent />
-      </Landing>
-      <ListingInfo listingData={data.listing_data} />
+      { showModal ? <Modal info={data.listing_data} photos={data.listing_photos} /> : null}
+      <Wrapper>
+        <Landing onClick={(e) => {
+          if (e.target.innerText !== ' Save') {
+            showModal ? setWrapper(Norm) : setWrapper(GrayOut);
+            setShowModal(!showModal);
+          }
+        }}>
+          <Banner data={data} />
+          <PhotoComponent photos={data.listing_photos} />
+        </Landing>
+        <ListingInfo listingData={data.listing_data} />
+      </Wrapper>
     </div>
   );
 }
