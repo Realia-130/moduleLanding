@@ -12,7 +12,7 @@ const { Pink } = require('./PhotoStyles');
 function Banner({ data }) {
   const [isNew] = useState(data.listing_is_new);
   const [isSaved, setSaved] = useState(data.listing_is_saved);// change to data.listing_is_saved
-  const [heart, setHeart] = useState(<i class="far fa-heart " />)
+  const [heart, setHeart] = useState(<i className="far fa-heart " />)
 
   function savedCall() {
     axios({

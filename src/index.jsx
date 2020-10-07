@@ -1,10 +1,11 @@
 /* eslint-disable import/extensions */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import ListingInfo from './components/listingData/ListingInfo.jsx';
 import Banner from './components/photoComponents/Banner.jsx';
 import PhotoComponent from './components/photoComponents/PhotoComponent.jsx';
 import Modal from './components/photoComponents/Modal.jsx';
+import axios from 'axios';
 const { Landing, GrayOut, Norm } = require('./AppStyle');
 
 const data = {
@@ -43,26 +44,57 @@ function Photos() {
 
   const [Wrapper, setWrapper] = useState(Norm);
   const [showModal, setShowModal] = useState(data.listing_is_saved);
+  const [listingData, setListingData] = useState({});
+  const [ready, setReady] = useState(false);
+
+
+  useEffect(() => {
+
+    async function fetchData() {
+      const params = { listingId: 23 }
+      const res = await axios.get('http://localhost:3001/api/listing', { params });
+      // console.log(res.data[0])
+      setListingData(res.data[0])
+      setReady(true)
+
+      return res.data[0]
+    }
+
+    fetchData()
+    // setListingData(fetchData())
+    // console.log(listingData)
+    // setReady(true)
+  }, [])
+
   const callBack = () => {
     showModal ? setWrapper(Norm) : setWrapper(GrayOut);
     setShowModal(!showModal);
   }
   return (
-    <div>
-      { showModal ? <Modal info={data.listing_data} photos={data.listing_photos} setModal={callBack} /> : null}
-      <Wrapper>
-        <Landing onClick={(e) => {
-          if (e.target.innerText !== ' Save') {
-            showModal ? setWrapper(Norm) : setWrapper(GrayOut);
-            setShowModal(!showModal);
-          }
-        }}>
-          <Banner data={data} />
-          <PhotoComponent photos={data.listing_photos} />
-        </Landing>
-        <ListingInfo listingData={data.listing_data} />
-      </Wrapper>
-    </div>
+    <>
+
+      {
+        !ready ? <div>Loading</div> :
+
+          <div>
+            {showModal ? <Modal info={listingData.listing_data} photos={listingData.listing_photos} setModal={callBack} /> : null
+            }
+            <Wrapper>
+              <Landing onClick={(e) => {
+                if (e.target.innerText !== ' Save') {
+                  showModal ? setWrapper(Norm) : setWrapper(GrayOut);
+                  setShowModal(!showModal);
+                }
+              }}>
+                <Banner data={data} />
+                <PhotoComponent photos={listingData.listing_photos} />
+              </Landing>
+              <ListingInfo listingData={listingData.listing_data} />
+            </Wrapper>
+          </div>
+      }
+
+    </>
   );
 }
 
