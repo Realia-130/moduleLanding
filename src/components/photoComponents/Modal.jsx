@@ -22,16 +22,16 @@ function Modal({ info, photos, setModal }) {
     return (
       <Carousel>
         <ArrowBtnLT onClick={Left}>
-          <i class="fas fa-chevron-left" />
+          <i className="fas fa-chevron-left" />
         </ArrowBtnLT>
         <img width="95%" height="95%" object-fit="contain" src={`${photos[currentImg]}`} alt="sampleData" />
         <ArrowBtnRT onClick={Right}>
-          <i class="fas fa-chevron-right" />
+          <i className="fas fa-chevron-right" />
         </ArrowBtnRT>
       </Carousel>
     );
   }
-  const [heart, setHeart] = useState(<i class="far fa-heart " />)
+  const [heart, setHeart] = useState(<i className="far fa-heart " />)
 
   function savedCall() {
     axios({
@@ -43,14 +43,14 @@ function Modal({ info, photos, setModal }) {
       },
     })
       .then(setSaved(!isSaved));
-    isSaved ? setHeart(<Pink><i class="fas fa-heart " /></Pink>) : setHeart(<i class="far fa-heart " />)
+    isSaved ? setHeart(<Pink><i className="fas fa-heart " /></Pink>) : setHeart(<i className="far fa-heart " />)
   }
 
   function UpperBanner() {
     return (
       <UpperBannerWrapper>
         <SaveBTN onClick={savedCall}>{heart} Save</SaveBTN>
-        <Exit><i class="fas fa-times fa-2x" onClick={setModal} /></Exit>
+        <Exit><i className="fas fa-times fa-2x" onClick={setModal} /></Exit>
       </UpperBannerWrapper >
     );
   }

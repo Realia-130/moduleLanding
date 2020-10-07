@@ -74,7 +74,7 @@ function Photos() {
     <>
 
       {
-        !ready ? <div>Loading</div> :
+        !ready ? <div></div> :
 
           <div>
             {showModal ? <Modal info={listingData.listing_data} photos={listingData.listing_photos} setModal={callBack} /> : null

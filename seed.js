@@ -44,8 +44,8 @@ function createListing(id, list) {
   };
 
   const listingStatus = isNew();
-  const startPrice = Math.floor(Math.random() * 45) * 15000;
-  const currentPrice = listingStatus ? startPrice : (startPrice - ((Math.floor(Math.random() * 5) + 1) * 10000));
+  const startPrice = Math.floor(Math.random() * 55) * 15000;
+  const currentPrice = listingStatus ? startPrice : (startPrice - (startPrice * .10));
 
   let newListing = {
     _id: id,
