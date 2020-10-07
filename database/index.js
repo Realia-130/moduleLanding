@@ -10,8 +10,28 @@ mongoose.connect('mongodb://localhost/listings', {
 });
 
 const seedListings = (callback, newListing) => {
-  let listing = new model.Listing();
-  listing = Object.assign(listing, newListing);
+  const listing = new model.Listing(
+    {
+      _id: newListing._id,
+      listing_id: newListing.listing_id,
+      listing_photos: newListing.listing_photo,
+      listing_type: newListing.listing_type,
+      listing_is_saved: newListing.listing_is_saved,
+      listing_is_new: newListing.listing_is_new,
+      listing_data: {
+        address: newListing.listing_data.address,
+        city: newListing.listing_data.city,
+        state: newListing.listing_data.state,
+        zipCode: newListing.listing_data.zipCode,
+        neighborhood: newListing.listing_data.neighborhood,
+        bed_count: newListing.listing_data.bed_count,
+        bath_count: newListing.listing_data.bath_count,
+        sqft: newListing.listing_data.sqft,
+        starting_price: newListing.listing_data.starting_price,
+        current_price: newListing.listing_data.current_price,
+      }
+    }
+  );
 
   listing.save()
     .then(() => callback(null, 'saved'))

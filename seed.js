@@ -1,13 +1,9 @@
-/* eslint-disable max-len */
-/* eslint-disable no-param-reassign */
-/* eslint-disable radix */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-console */
-/* eslint-disable import/no-extraneous-dependencies */
 const faker = require('faker');
 const axios = require('axios');
+const { s3, urlList } = require('./awsData');
+const Promise = require('bluebird');
 
-function createListing(id) {
+function createListing(id, list) {
   let room = Math.floor(Math.random() * 7);
   room = room < 2 ? 2 : room;
 
@@ -19,12 +15,12 @@ function createListing(id) {
 
   const SQFT = (rooms) => {
     let sqft = Math.floor(Math.random() * (rooms * 10));
-    // eslint-disable-next-line no-return-assign
     sqft *= 100;
     sqft < 1000 ? (sqft += 1000) : sqft;
 
     return sqft;
   };
+
 
   const DATE = (startDate) => {
     // const date = new Date();
@@ -50,9 +46,11 @@ function createListing(id) {
   const listingStatus = isNew();
   const startPrice = Math.floor(Math.random() * 45) * 15000;
   const currentPrice = listingStatus ? startPrice : (startPrice - ((Math.floor(Math.random() * 5) + 1) * 10000));
-  const newListing = {
+
+  let newListing = {
+    _id: id,
     listing_id: id,
-    listing_photo: [],
+    listing_photo: list,
     listing_type: 'For Sale',
     listing_is_saved: false,
     listing_is_new: listingStatus,
@@ -60,7 +58,7 @@ function createListing(id) {
       address: faker.address.streetAddress(),
       city: faker.address.city(),
       state: faker.address.stateAbbr(),
-      zipCode: faker.zipCode(),
+      zipCode: faker.address.zipCode(),
       neighborhood: faker.address.county(),
       bed_count: room,
       bath_count: getRest(room),
@@ -69,16 +67,29 @@ function createListing(id) {
       current_price: currentPrice,
     },
   };
-
   return newListing;
 }
 
 for (let index = 1; index <= 100; index += 1) {
-  axios({
-    method: 'post',
-    url: 'http://localhost:3001/seeding',
-    data: createListing(index),
+  let BucketParams = {
+    Bucket: 'realialistings',
+    Delimiter: '/',
+    Prefix: `listing${index}/`,
+  }
+  s3.listObjects(BucketParams, (err, data) => {
+    if (err) {
+      console.log(err)
+    } else {
+      axios({
+        method: 'post',
+        url: 'http://localhost:3001/seeding',
+        data: createListing(index, urlList(data.Contents)),
+      }).then(() => {
+        console.log(index, 'completed')
+      })
+        .catch((err) => console.log(err));
+    }
   })
-    .then(() => { })
-    .catch((err) => console.log(err));
+
+
 }

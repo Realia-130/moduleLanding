@@ -24,7 +24,7 @@ function Banner({ data }) {
       },
     })
       .then(setSaved(!isSaved));
-    isSaved ? setHeart(<Pink><i class="fas fa-heart " /></Pink>) : setHeart(<i class="far fa-heart " />)
+    isSaved ? setHeart(<Pink><i className="fas fa-heart " /></Pink>) : setHeart(<i className="far fa-heart " />)
   }
 
   return (
