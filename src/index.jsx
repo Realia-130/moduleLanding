@@ -51,7 +51,7 @@ function Photos() {
   useEffect(() => {
 
     async function fetchData() {
-      const params = { listingId: 23 }
+      const params = { listingId: Math.floor(Math.random() * 100) }
       const res = await axios.get('http://localhost:3001/api/listing', { params });
       // console.log(res.data[0])
       setListingData(res.data[0])
