@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const listingSchema = new Schema({
+  _id: Number,
   listing_id: Number,
   listing_photos: Array,
   listing_type: String,
