@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 export const ModalWrapper = styled.div`
   overflow: hidden;
-  padding-bottom: 15px;
+  /* padding-bottom: 15px; */
   width: calc(100% - 96px);
+  /* width: 900px; */
   height: calc(100% - 96px);
+  height:600px;
   margin: 48px;
   background: black;
   display: flex;
@@ -27,15 +29,17 @@ export const LowerBannerWrapper = styled.div`
   justify-content: space-between;
 `;
 export const UpperBannerWrapper = styled.div`
-  /* margin: 0px; */
+  /* margin: 0,0,0,auto; */
   font-size: 15px;
   width: 100%;
   background: #fff;
   display: flex;
   height: 59px;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-end;
+  flex-direction: rtl;
+  justify-items: end;
+  justify-content: flex-end;
+  align-items: center;
+  /* float: right; */
 `;
 export const Carousel = styled.div`
   width: 100%;

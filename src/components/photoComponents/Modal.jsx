@@ -5,10 +5,13 @@ const { SaveBTN } = require('./PhotoStyles');
 const { Pink } = require('./PhotoStyles');
 const { ModalWrapper, LowerBannerWrapper, UpperBannerWrapper, Carousel, Exit, ArrowBtnLT, ArrowBtnRT } = require('./ModalStyles');
 
-function Modal({ info, photos, setModal }) {
+function Modal({ info, photos, setModal, saved, isSaved }) {
   const totalPhotos = photos.length - 1;
   const [currentImg, setCurrentImg] = useState(0);
-  const [isSaved, setSaved] = useState(info.listing_is_saved);
+
+  useEffect(() => {
+    isSaved ? setHeart(<Pink><i className="fas fa-heart " /></Pink>) : setHeart(<i className="far fa-heart " />);
+  }, [isSaved]);
 
   function Left() {
     currentImg === 0 ? setCurrentImg(totalPhotos) : setCurrentImg(currentImg - 1);
@@ -24,7 +27,7 @@ function Modal({ info, photos, setModal }) {
         <ArrowBtnLT onClick={Left}>
           <i className="fas fa-chevron-left" />
         </ArrowBtnLT>
-        <img width="95%" height="95%" object-fit="contain" src={`${photos[currentImg]}`} alt="sampleData" />
+        <img width="800px" height="500px" object-fit="contain" src={`${photos[currentImg]}`} alt="sampleData" />
         <ArrowBtnRT onClick={Right}>
           <i className="fas fa-chevron-right" />
         </ArrowBtnRT>
@@ -34,22 +37,16 @@ function Modal({ info, photos, setModal }) {
   const [heart, setHeart] = useState(<i className="far fa-heart " />)
 
   function savedCall() {
-    axios({
-      method: 'PUT',
-      url: 'http://localhost:3001/api/update_saved',
-      params: {
-        listingId: info.listing_id,
-        newValue: !isSaved,
-      },
-    })
-      .then(setSaved(!isSaved));
+    saved();
     isSaved ? setHeart(<Pink><i className="fas fa-heart " /></Pink>) : setHeart(<i className="far fa-heart " />)
   }
 
   function UpperBanner() {
     return (
       <UpperBannerWrapper>
-        <SaveBTN onClick={savedCall}>{heart} Save</SaveBTN>
+        <SaveBTN onClick={() => {
+          savedCall();
+        }}>{heart} Save</SaveBTN>
         <Exit><i className="fas fa-times fa-2x" onClick={setModal} /></Exit>
       </UpperBannerWrapper >
     );
