@@ -92,3 +92,7 @@ z-index: -1;
 export const Pink = styled.span`
 color: #F75E3F;
 `;
+
+export const Teal = styled.span`
+color: #187882;
+`;

@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 const { SaveBTN } = require('./PhotoStyles');
-const { Pink } = require('./PhotoStyles');
 const { ModalWrapper, LowerBannerWrapper, UpperBannerWrapper, Carousel, Exit, ArrowBtnLT, ArrowBtnRT } = require('./ModalStyles');
 
-function Modal({ info, photos, setModal, saved, isSaved }) {
+function Modal({ info, photos, setModal, saved, isSaved, heart }) {
   const totalPhotos = photos.length - 1;
   const [currentImg, setCurrentImg] = useState(0);
-
-  useEffect(() => {
-    isSaved ? setHeart(<Pink><i className="fas fa-heart " /></Pink>) : setHeart(<i className="far fa-heart " />);
-  }, [isSaved]);
 
   function Left() {
     currentImg === 0 ? setCurrentImg(totalPhotos) : setCurrentImg(currentImg - 1);
@@ -34,11 +29,9 @@ function Modal({ info, photos, setModal, saved, isSaved }) {
       </Carousel>
     );
   }
-  const [heart, setHeart] = useState(<i className="far fa-heart " />)
 
   function savedCall() {
     saved();
-    isSaved ? setHeart(<Pink><i className="fas fa-heart " /></Pink>) : setHeart(<i className="far fa-heart " />)
   }
 
   function UpperBanner() {
