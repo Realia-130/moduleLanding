@@ -27,7 +27,7 @@ function Photos() {
     async function fetchData() {
       const params = { listingId: Math.floor(Math.random() * 100) }
       // const params = { listingId: 57 }
-      const res = await axios.get('http://localhost:3001/api/listing', { params })
+      const res = await axios.get('http://13.56.168.18/api/listing', { params })
         .then(({ data }) => {
           setListingData(data[0])
           setSaved(data[0].listing_is_saved)
@@ -55,7 +55,7 @@ function Photos() {
 
   const handleSave = () => {
     axios({
-      url: 'http://localhost:3001/api/update_saved',
+      url: 'http://13.56.168.18/api/update_saved',
       method: 'PUT',
       params: {
         listingId: listingData.listing_id,
