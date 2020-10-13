@@ -56,6 +56,7 @@ app.post('/api/tours', (req, res) => {
 });
 
 app.put('/api/update_saved', (req, res) => {
+  console.log(req.query);
   const { listingId } = req.query;
   const { newValue } = req.query;
   db.updateSave((error, results) => {

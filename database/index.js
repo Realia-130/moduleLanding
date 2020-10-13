@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const model = require('./listingSchema');
 
-mongoose.connect('mongodb://localhost/listings', {
+mongoose.connect('mongodb://172.17.0.3/listings', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   useFindAndModify: false,
@@ -55,6 +55,7 @@ const scheduleTour = (callback, tourInfo) => {
 };
 
 const updateSave = (callback, listingId, newValue) => {
+  console.log('made it in')
   const errorFunction = (error, result) => {
     if (error) {
       callback(error);

@@ -2,10 +2,8 @@ import styled from 'styled-components';
 
 export const ModalWrapper = styled.div`
   overflow: hidden;
-  padding-bottom: 15px;
-  width: calc(100% - 96px);
-  height: calc(100% - 96px);
-  margin: 48px;
+  width: 1000px;
+  height:600px;
   background: black;
   display: flex;
   flex-direction: column;
@@ -14,8 +12,11 @@ export const ModalWrapper = styled.div`
   border-radius: 8px;
   z-index: 200;
   position: absolute;
-  top: 0;
   left: 0;
+  right: 0;
+  margin-top: 70px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 export const LowerBannerWrapper = styled.div`
   color: white;
@@ -27,15 +28,15 @@ export const LowerBannerWrapper = styled.div`
   justify-content: space-between;
 `;
 export const UpperBannerWrapper = styled.div`
-  /* margin: 0px; */
   font-size: 15px;
   width: 100%;
   background: #fff;
   display: flex;
   height: 59px;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-end;
+  flex-direction: rtl;
+  justify-items: end;
+  justify-content: flex-end;
+  align-items: center;
 `;
 export const Carousel = styled.div`
   width: 100%;
