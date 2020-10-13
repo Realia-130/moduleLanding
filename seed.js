@@ -23,7 +23,7 @@ function createListing(id, list) {
 
 
   const DATE = (startDate) => {
-    // const date = new Date();
+
     const month = startDate.getMonth() + 1;
     const day = startDate.getDate();
     const year = startDate.getFullYear();
