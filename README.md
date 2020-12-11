@@ -1,39 +1,22 @@
-# Project Name
+# Relia
 
-> Project description
+## TECH STACK:
+  ### MERN MongoDB, Express, React Node.js
+    AWS S3 used to store images for each listing
+    
+## Description:
+Photo display component for real estate listing application. To display listing data and fetch photos from AWS S3
 
-## Related Projects
+Allow users to save a listing. Which is saved on database and displays on the photo gallery modal.
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+![Imgur](demo/saveDemo.gif)
 
-## Table of Contents
+Allows the users to view photos tied a specific listing and presents them on a photo carousel.
+![Imgur](demo/photoDemo.gif)
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
 
-## Usage
 
-> Some usage instructions
-
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
-
+![Imgur](demo/img1.png)
+![Imgur](demo/img2.png)
+![Imgur](demo/img3.png)
+![Imgur](demo/img4.png)
